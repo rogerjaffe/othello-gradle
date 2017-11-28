@@ -27,7 +27,7 @@ public class Controller
   }
   
   /**
-   * Run the game with the two players.  Player 1 always goes first
+   * Run the game with the two players.  Player 1 BLACK always goes first
    */
   public void run() {
     try {
@@ -47,9 +47,11 @@ public class Controller
         // Get the player's next move from the student's Player class and 
         // display the move
         Position nextMove = playerToMove.getNextMove(this.board);
-        System.out.println(playerToMove.toString()+ " MOVE to "+nextMove.toString());
+        if (nextMove != null) {
+          System.out.println(playerToMove.toString()+ " MOVE to "+nextMove.toString());
+        }
 
-        if (board.getSquare(playerToMove, nextMove).getStatus() != Constants.EMPTY) {
+        if (nextMove != null && board.getSquare(playerToMove, nextMove).getStatus() != Constants.EMPTY) {
           System.out.println("YOU CANNOT MOVE IN SPACE ["+nextMove.getRow()+","+nextMove.getCol()+"]");
         } else if (nextMove != null) {
           // Check that the move is legal
@@ -61,7 +63,7 @@ public class Controller
           }
         } else {
           // No move was found. Skip the player's turn
-          System.out.println(playerToMove.toString()+" HAS NO MOVE THIS TURN");
+          System.out.println(playerToMove.toString()+" HAS NO MOVE THIS TURN\n");
         }
         // Delay so we can see the progression in the console
         TimeUnit.SECONDS.sleep(Constants.DELAY);

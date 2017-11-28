@@ -201,8 +201,8 @@ public class Board
       Position directionVector = Directions.getVector(direction);
       if (makeMoveStep(playerToMove, positionToMove, directionVector, 0)) {
         this.setSquare(playerToMove, positionToMove);      
-      } else {
-        System.out.println("**** THIS SPACE IS NOT A VALID MOVE. YOU LOSE!");
+//      } else {
+//        System.out.println("**** THIS SPACE IS NOT A VALID MOVE. YOU LOSE!");
       }
     }
   }
