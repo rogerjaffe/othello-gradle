@@ -66,7 +66,7 @@ public class Board
    * @param idx Index to check
    * @return True if 0 <= idx < Constants.SIZE
    */
-  private boolean indexInRange(int idx) {
+  protected boolean indexInRange(int idx) {
     return 0 <= idx && idx < Constants.SIZE;
   }
   
@@ -75,7 +75,7 @@ public class Board
    * @param player Player whose color we should set
    * @param position Position of the cell to set
    */
-  private void setSquare(Player player, Position position) {
+  protected void setSquare(Player player, Position position) {
     this.squares[position.getRow()][position.getCol()].setStatus(player.getColor());
   }
   
@@ -140,7 +140,7 @@ public class Board
    * @param count Number of steps we've made so far
    * @return True if we find a legal move
    */
-  private boolean step(Player player, Position position, Position direction, int count) {
+  protected boolean step(Player player, Position position, Position direction, int count) {
     Position newPosition = position.translate(direction);
     int color = player.getColor();
     if (newPosition.isOffBoard()) {
@@ -172,7 +172,7 @@ public class Board
    * @param count Number of steps we've made so far
    * @return True if we find a legal move
    */
-  private boolean makeMoveStep(Player player, Position position, Position direction, int count) {
+  protected boolean makeMoveStep(Player player, Position position, Position direction, int count) {
     Position newPosition = position.translate(direction);
     int color = player.getColor();
     if (newPosition.isOffBoard()) {

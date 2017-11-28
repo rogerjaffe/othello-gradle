@@ -27,6 +27,14 @@ public class Controller
   }
   
   /**
+   * Displays the matchup with the player names
+   */
+  public void displayMatchup() {
+    System.out.println("******* MATCHUP *******");
+    System.out.println(this.player1.toString() + " vs. " + this.player2.toString() + "\n");
+  }
+  
+  /**
    * Run the game with the two players.  Player 1 BLACK always goes first
    */
   public void run() {

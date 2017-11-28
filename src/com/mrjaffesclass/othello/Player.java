@@ -29,6 +29,14 @@ public class Player
   public int getColor() {
     return this.color;
   }
+  
+  /**
+   * Gets the player name
+   * @return        Player name
+   */
+  public String getName() {
+    return this.name;
+  }
 
   /**
    * The player must override getNextMove
