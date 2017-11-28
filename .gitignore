@@ -1,5 +1,4 @@
 src/com/mrjaffesclass/othello/TestPlayer.java
-build
-dist
-nbproject
+build/
+dist/
 
