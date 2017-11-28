@@ -33,7 +33,8 @@ public class Player
   /**
    * The player must override getNextMove
    * @param board Game board
-   * @return A position coordinate pair of his/her next move
+   * @return A position coordinate pair of his/her next move. Returns null
+   *          if no move is available
    */
   Position getNextMove(Board board) {
     return null;
