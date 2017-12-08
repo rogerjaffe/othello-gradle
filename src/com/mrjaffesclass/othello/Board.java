@@ -115,6 +115,10 @@ public class Board
    * @return True if this space is a legal move
    */
   public boolean isLegalMove(Player player, Position positionToCheck) {
+    // If the space isn't empty, it's not a legal move
+    if (getSquare(player, positionToCheck).getStatus() != Constants.EMPTY)
+      return false;
+    // Check all directions to see if the move is legal
     for (String direction : Directions.getDirections()) {
       Position directionVector = Directions.getVector(direction);
       if (step(player, positionToCheck, directionVector, 0)) {
