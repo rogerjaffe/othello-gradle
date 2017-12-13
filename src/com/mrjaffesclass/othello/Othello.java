@@ -19,11 +19,12 @@ public class Othello {
    */
   public static void main(String[] args) {
     Controller c = new Controller( 
-      new TestPlayer("Roger 1", Constants.BLACK),
-      new TestPlayer("Roger 2", Constants.WHITE) 
+      new TestPlayer("P1", Constants.BLACK),
+      new TestPlayer("Read", Constants.WHITE) 
     );
     c.displayMatchup();
-    c.run();
+    int result = c.run();
+    System.exit(0);
   }
   
 }

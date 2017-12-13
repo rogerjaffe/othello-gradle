@@ -27,7 +27,7 @@ public class Controller
   }
   
   /**
-   * Displays the matchup with the player names
+   * Displays the match up with the player names
    */
   public void displayMatchup() {
     System.out.println("******* MATCHUP *******");
@@ -37,7 +37,7 @@ public class Controller
   /**
    * Run the game with the two players.  Player 1 BLACK always goes first
    */
-  public void run() {
+  public int run() {
     try {
       // Print heading
       System.out.println("START OF GAME");
@@ -45,7 +45,7 @@ public class Controller
 
       // Black - Player 1 goes first
       boolean blackPlayersTurn = true;
-
+      
       // While there are still spaces left
       while (board.countSquares(Constants.EMPTY) > 0) {
 
@@ -85,19 +85,24 @@ public class Controller
       // Get the score
       int black = board.countSquares(Constants.BLACK);
       int white = board.countSquares(Constants.WHITE);
-      System.out.println("BLACK: "+black+" SQUARES");
-      System.out.println("WHITE: "+white+" SQUARES");
+      System.out.println(this.player1.getName()+"-BLACK: "+black+" SQUARES");
+      System.out.println(this.player2.getName()+"-WHITE: "+white+" SQUARES\n");
 
       // And who wins
-      if (black > white) 
-        System.out.println("BLACK WINS!");
-      else if (white > black) 
-        System.out.println("WHITE WINS!");
-      else 
+      if (black > white) {
+        System.out.println(this.player1.getName()+"-BLACK WINS!");
+        return 1;
+      } else if (white > black) {
+        System.out.println(this.player2.getName()+"-WHITE WINS!");
+        return 2;
+      } else {
         System.out.println("TIE GAME");
+        return 3;
+      }
     } catch (InterruptedException e) {
       System.out.println("OH NO!!! There was a time exception!\n");
       System.out.println(e.getMessage());
+      return 0;
     }
   }
     
