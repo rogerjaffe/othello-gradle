@@ -74,7 +74,7 @@ public class Controller
           System.out.println(playerToMove.toString()+" HAS NO MOVE THIS TURN\n");
         }
         // Delay so we can see the progression in the console
-        TimeUnit.SECONDS.sleep(Constants.DELAY);
+        TimeUnit.MILLISECONDS.sleep(Constants.DELAY);
         // Switch turn to other player
         blackPlayersTurn = !blackPlayersTurn;
       }
