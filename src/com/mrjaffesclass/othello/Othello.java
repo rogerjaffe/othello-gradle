@@ -19,8 +19,8 @@ public class Othello {
    */
   public static void main(String[] args) {
     Controller c = new Controller( 
-      new TestPlayer("P1", Constants.BLACK),
-      new TestPlayer("Read", Constants.WHITE) 
+      new TestPlayer("Test Player 1", Constants.BLACK), 
+      new TestPlayer("Test Player 2", Constants.WHITE)
     );
     c.displayMatchup();
     int result = c.run();
