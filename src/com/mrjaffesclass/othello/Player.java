@@ -10,16 +10,13 @@ package com.mrjaffesclass.othello;
 public class Player
 {
   private final int color;
-  private final String name;
   
   /**
    * Player constructor
-   * @param name    Name of the player
    * @param color   One of Constants.WHITE or Constants.BLACK
    */
-  public Player(String name, int color) {
+  public Player(int color) {
     this.color = color;
-    this.name = name;
   }
   
   /**
@@ -35,7 +32,7 @@ public class Player
    * @return        Player name
    */
   public String getName() {
-    return this.name;
+    return this.getClass().getSimpleName();
   }
 
   /**
@@ -52,11 +49,11 @@ public class Player
   public String toString() {
     switch (this.color) {
       case Constants.BLACK:
-        return this.name+" (BLACK)";
+        return this.getName()+" (BLACK)";
       case Constants.WHITE:
-        return this.name+" (WHITE)";
+        return this.getName()+" (WHITE)";
       default:
-        return this.name+" (?????)";
+        return this.getName()+" (?????)";
     }
   }
   
