@@ -39,10 +39,10 @@ public final class Square
   @Override
   public String toString() {
     switch (status) {
-      case Constants.WHITE: return "W";
-      case Constants.BLACK: return "B";
+      case Constants.WHITE: return " W ";
+      case Constants.BLACK: return " B ";
     }
-    return " ";
+    return "   ";
   }
   
 }

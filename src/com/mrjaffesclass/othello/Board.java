@@ -216,10 +216,10 @@ public class Board
     StringBuilder sb = new StringBuilder("  | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n");
     sb.append                           ("--+---+---+---+---+---+---+---+---+\n");
     for (int row = 0; row < Constants.SIZE; row++) {
-      sb.append(row).append(" | ");
+      sb.append(row).append(" |");
       for (int col = 0; col < Constants.SIZE; col++) {
         Square square = this.squares[row][col];
-        sb.append(square.toString()).append(" | ");
+        sb.append(square.toString()).append("|");
       }
       sb.append                           ("\n--+---+---+---+---+---+---+---+---+\n");
     }
