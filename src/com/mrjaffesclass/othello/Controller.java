@@ -45,9 +45,11 @@ public class Controller
 
       // Black - Player 1 goes first
       boolean blackPlayersTurn = true;
+      boolean onePlayerCantMove = false;
+      boolean neitherPlayerCanMove = false;
       
       // While there are still spaces left
-      while (board.countSquares(Constants.EMPTY) > 0) {
+      while (!neitherPlayerCanMove && board.countSquares(Constants.EMPTY) > 0) {
 
         // Get the player whose turn it is
         Player playerToMove = (blackPlayersTurn) ? this.player1 : this.player2;
@@ -68,9 +70,15 @@ public class Controller
             // Make the move and print the move and the new board
             board.makeMove(playerToMove, nextMove);
             System.out.println(board.toString());
+            onePlayerCantMove = false;
           }
         } else {
           // No move was found. Skip the player's turn
+          if (onePlayerCantMove) {
+            neitherPlayerCanMove = true;
+          } else {
+            onePlayerCantMove = true;
+          }
           System.out.println(playerToMove.toString()+" HAS NO MOVE THIS TURN\n");
         }
         // Delay so we can see the progression in the console
