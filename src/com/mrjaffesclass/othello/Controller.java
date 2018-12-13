@@ -36,6 +36,7 @@ public class Controller
   
   /**
    * Run the game with the two players.  Player 1 BLACK always goes first
+   * @return Return code for the game
    */
   public int run() {
     try {
@@ -61,8 +62,9 @@ public class Controller
           System.out.println(playerToMove.toString()+ " MOVE to "+nextMove.toString());
         }
 
-        if (nextMove != null && board.getSquare(playerToMove, nextMove).getStatus() != Constants.EMPTY) {
-          System.out.println("YOU CANNOT MOVE IN SPACE ["+nextMove.getRow()+","+nextMove.getCol()+"]");
+        // If a nextMove was returned, but if it's not to an empty space, or to a legalMove
+        if (nextMove != null && !board.isLegalMove(playerToMove, nextMove)) {
+          System.out.println("!!!! YOU CANNOT MOVE IN SPACE ["+nextMove.getRow()+","+nextMove.getCol()+"] !!!!\n");
         } else if (nextMove != null) {
           // Check that the move is legal
           if (this.board.isLegalMove(playerToMove, nextMove)) {
