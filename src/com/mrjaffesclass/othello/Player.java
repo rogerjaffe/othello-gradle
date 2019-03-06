@@ -44,6 +44,24 @@ public class Player
   Position getNextMove(Board board) {
     return null;
   };
+  
+  /**
+   * Are this player and the passed-in player the same?
+   * @param p Passed-in player
+   * @return true if the players are the same
+   */
+  boolean isThisPlayer(Player p) {
+    return p.getColor() == this.getColor();
+  }
+  
+  /**
+   * Are this color and the passed-in color the same?
+   * @param p Passed-in color (represented as an integer)
+   * @return true if the colors (integers) are the same
+   */
+  boolean isThisPlayer(int p) {
+    return p == this.getColor();
+  }
 
   @Override
   public String toString() {

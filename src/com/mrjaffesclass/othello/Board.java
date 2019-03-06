@@ -89,7 +89,7 @@ public class Board
   public Square getSquare(Player player, int row, int col) {
     if (this.indexInRange(row) && this.indexInRange(col)) {
       Position pos = new Position(row, col);
-      return this.getSquare(player, pos);
+      return this.getSquare(pos);
     } else {
       System.out.println("**** INDEX INTO THE BOARD IS OUT OF RANGE ["+row+","+col+"]");
       System.out.println(player.toString()+" MESSED UP. YOU LOSE");
@@ -100,11 +100,10 @@ public class Board
   
   /**
    * Get the status of a square
-   * @param player Player asking for the square information
    * @param position Position of requested square
    * @return Square object representing the square requested
    */
-  public Square getSquare(Player player, Position position) {
+  public Square getSquare(Position position) {
     return this.squares[position.getRow()][position.getCol()];
   }
   
@@ -116,7 +115,7 @@ public class Board
    */
   public boolean isLegalMove(Player player, Position positionToCheck) {
     // If the space isn't empty, it's not a legal move
-    if (getSquare(player, positionToCheck).getStatus() != Constants.EMPTY)
+    if (getSquare(positionToCheck).getStatus() != Constants.EMPTY)
       return false;
     // Check all directions to see if the move is legal
     for (String direction : Directions.getDirections()) {
@@ -149,9 +148,9 @@ public class Board
     int color = player.getColor();
     if (newPosition.isOffBoard()) {
       return false;
-    } else if (this.getSquare(player, newPosition).getStatus() == -color) {
+    } else if (!player.isThisPlayer(this.getSquare(newPosition).getStatus())) {
       return step(player, newPosition, direction, count+1);
-    } else if (this.getSquare(player, newPosition).getStatus() == color) {
+    } else if (player.isThisPlayer(this.getSquare(newPosition).getStatus())) {
       return count > 0;
     } else {
       return false;
@@ -181,13 +180,13 @@ public class Board
     int color = player.getColor();
     if (newPosition.isOffBoard()) {
       return false;
-    } else if (this.getSquare(player, newPosition).getStatus() == -color) {
+    } else if (this.getSquare(newPosition).getStatus() == -color) {
       boolean valid = makeMoveStep(player, newPosition, direction, count+1);
       if (valid) {
         this.setSquare(player, newPosition);
       }
       return valid;
-    } else if (this.getSquare(player, newPosition).getStatus() == color) {
+    } else if (this.getSquare(newPosition).getStatus() == color) {
       return count > 0;
     } else {
       return false;
