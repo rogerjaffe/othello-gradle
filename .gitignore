@@ -2,4 +2,5 @@ src/com/mrjaffesclass/othello/TestPlayer.java
 build/
 dist/
 src/com/mrjaffesclass/othello/Read.java
+.idea
 
