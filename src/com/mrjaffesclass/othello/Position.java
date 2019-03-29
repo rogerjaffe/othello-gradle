@@ -10,8 +10,8 @@ import java.awt.Point;
  */
 public class Position extends Point {
   
-  public Position(int x, int y) {
-    super (x, y);
+  public Position(int row, int col) {
+    super (row, col);
   }
   
   public int getRow() {
