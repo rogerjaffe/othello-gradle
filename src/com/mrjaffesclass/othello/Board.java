@@ -147,12 +147,20 @@ public class Board
     Position newPosition = position.translate(direction);
     int color = player.getColor();
     if (newPosition.isOffBoard()) {
+      // If off the board then move is not legal
+      return false;
+    } else if ((this.getSquare(newPosition).getStatus() == Constants.EMPTY) && (count == 1)) {
+      // If empty space AND adjacent to position then not legal
       return false;
     } else if (!player.isThisPlayer(this.getSquare(newPosition).getStatus())) {
+      // If space has opposing player then move to next space in same direction
       return step(player, newPosition, direction, count+1);
     } else if (player.isThisPlayer(this.getSquare(newPosition).getStatus())) {
+      // If space has this player and we've moved more than one space then it's legal,
+      // otherwise it's not legal
       return count > 0;
     } else {
+      // Didn't pass any other test, not legal move
       return false;
     }
   }
