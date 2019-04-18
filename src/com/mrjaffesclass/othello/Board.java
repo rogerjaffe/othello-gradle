@@ -149,7 +149,7 @@ public class Board
     if (newPosition.isOffBoard()) {
       // If off the board then move is not legal
       return false;
-    } else if ((this.getSquare(newPosition).getStatus() == Constants.EMPTY) && (count == 1)) {
+    } else if ((this.getSquare(newPosition).getStatus() == Constants.EMPTY) && (count == 0)) {
       // If empty space AND adjacent to position then not legal
       return false;
     } else if (!player.isThisPlayer(this.getSquare(newPosition).getStatus())) {
