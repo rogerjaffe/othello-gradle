@@ -152,7 +152,7 @@ public class Board
     } else if ((this.getSquare(newPosition).getStatus() == Constants.EMPTY) && (count == 0)) {
       // If empty space AND adjacent to position then not legal
       return false;
-    } else if (!player.isThisPlayer(this.getSquare(newPosition).getStatus())) {
+    } else if (!player.isThisPlayer(this.getSquare(newPosition).getStatus()) && this.getSquare(newPosition).getStatus() != Constants.EMPTY) {
       // If space has opposing player then move to next space in same direction
       return step(player, newPosition, direction, count+1);
     } else if (player.isThisPlayer(this.getSquare(newPosition).getStatus())) {
