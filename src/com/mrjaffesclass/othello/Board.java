@@ -183,7 +183,7 @@ public class Board
    * @param count Number of steps we've made so far
    * @return True if we find a legal move
    */
-  protected boolean makeMoveStep(Player player, Position position, Position direction, int count) {
+  private boolean makeMoveStep(Player player, Position position, Position direction, int count) {
     Position newPosition = position.translate(direction);
     int color = player.getColor();
     if (newPosition.isOffBoard()) {
