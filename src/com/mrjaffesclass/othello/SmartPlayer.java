@@ -430,7 +430,7 @@ public class SmartPlayer extends Player {
 	}
 	
 	/**
-	 * An extention of the board used to create a tree used in MCTS.
+	 * An extension of the board used to create a tree used in MCTS.
 	 * "inspiration" from: https://github.com/spopov812/MonteCarlo-Othello/blob/master/src/main/java/my/project/othello/Node.java
 	 * 
 	 * @author jimmy
