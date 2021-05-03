@@ -215,11 +215,11 @@ public class SmartPlayer extends Player {
 	 * 
 	 * @author jimmy
 	 */
-	private class BoardModel extends Board{
+	private class BoardModel{
 		/**
 		 * Board squares set up in a 2x2 array
 		 */
-		private Square[][] squares;
+		private byte[][] squares;
 
 		// THESE SHOULD REMAIN ACCURATE THROUGH THE USE OF ANY METHOD.
 		private int blackCount;
@@ -230,7 +230,7 @@ public class SmartPlayer extends Player {
 		 * Constructor for objects of class BoardModel
 		 */
 		public BoardModel() {
-			squares = new Square[Constants.SIZE][Constants.SIZE];
+			squares = new byte[Constants.SIZE][Constants.SIZE];
 			squares = this.initBoard(squares);
 			blackCount = 2;
 			whiteCount = 2;
@@ -241,11 +241,11 @@ public class SmartPlayer extends Player {
 			blackCount = 0;
 			whiteCount = 0;
 			emptyCount = 0;
-			squares = new Square[Constants.SIZE][Constants.SIZE];
+			squares = new byte[Constants.SIZE][Constants.SIZE];
 			for (int i = 0; i < Constants.SIZE; i++) {
 				for (int j = 0; j < Constants.SIZE; j++) {
 					int color = board.getSquare(new Position(i, j)).getStatus();
-					squares[i][j] = new Square(color);
+					squares[i][j] = (byte)color;
 					if(color == Constants.BLACK) {
 						blackCount++;
 					}
@@ -260,10 +260,10 @@ public class SmartPlayer extends Player {
 		}
 
 		public BoardModel(BoardModel board) {
-			squares = new Square[Constants.SIZE][Constants.SIZE];
+			squares = new byte[Constants.SIZE][Constants.SIZE];
 			for (int i = 0; i < Constants.SIZE; i++) {
 				for (int j = 0; j < Constants.SIZE; j++) {
-					squares[i][j] = new Square(board.getSquare(new Position(i, j)).getStatus());
+					squares[i][j] = board.getSquare(new Position(i, j));
 				}
 			}
 			this.blackCount = board.blackCount;
@@ -277,21 +277,21 @@ public class SmartPlayer extends Player {
 		 * 
 		 * @return New board
 		 */
-		private Square[][] initBoard(Square[][] squares) {
+		private byte[][] initBoard(byte[][] squares) {
 			for (int row = 0; row < Constants.SIZE; row++) {
 				for (int col = 0; col < Constants.SIZE; col++) {
-					squares[row][col] = new Square(Constants.EMPTY);
+					squares[row][col] = Constants.EMPTY;
 				}
 			}
-			squares[3][3].setStatus(Constants.WHITE);
-			squares[4][4].setStatus(Constants.WHITE);
-			squares[3][4].setStatus(Constants.BLACK);
-			squares[4][3].setStatus(Constants.BLACK);
+			squares[3][3] = Constants.WHITE;
+			squares[4][4] = Constants.WHITE;
+			squares[3][4] = Constants.BLACK;
+			squares[4][3] = Constants.BLACK;
 			return squares;
 		}
 
 		public void setSquare(int color, Position position) {
-			int color2 = this.squares[position.getRow()][position.getCol()].getStatus();
+			int color2 = this.squares[position.getRow()][position.getCol()];
 			if(color == Constants.BLACK) {
 				blackCount++;
 			}
@@ -310,18 +310,18 @@ public class SmartPlayer extends Player {
 			if(color2 == Constants.EMPTY) {
 				emptyCount--;
 			}
-			this.squares[position.getRow()][position.getCol()].setStatus(color);
+			this.squares[position.getRow()][position.getCol()] = (byte)color;
 		}
 
-		public Square getSquare(Position position) {
+		public byte getSquare(Position position) {
 			return this.squares[position.getRow()][position.getCol()];
 		}
 
 		public int countSquares(int toMatch) {
 			int count = 0;
-			for (Square[] row : this.squares) {
-				for (Square square : row) {
-					if (square.getStatus() == toMatch) {
+			for (byte[] row : this.squares) {
+				for (byte square : row) {
+					if (square == toMatch) {
 						count++;
 					}
 				}
@@ -345,7 +345,7 @@ public class SmartPlayer extends Player {
 
 		public boolean isLegalMove(int color, Position positionToCheck) {
 			// If the space isn't empty, it's not a legal move
-			if (getSquare(positionToCheck).getStatus() != Constants.EMPTY)
+			if (getSquare(positionToCheck) != Constants.EMPTY)
 				return false;
 			// Check all directions to see if the move is legal
 			for (String direction : Directions.getDirections()) {
@@ -362,14 +362,14 @@ public class SmartPlayer extends Player {
 			if (newPosition.isOffBoard()) {
 				// If off the board then move is not legal
 				return false;
-			} else if ((this.getSquare(newPosition).getStatus() == Constants.EMPTY) && (count == 0)) {
+			} else if ((this.getSquare(newPosition) == Constants.EMPTY) && (count == 0)) {
 				// If empty space AND adjacent to position then not legal
 				return false;
-			} else if (color != this.getSquare(newPosition).getStatus()
-				&& this.getSquare(newPosition).getStatus() != Constants.EMPTY) {
+			} else if (color != this.getSquare(newPosition)
+				&& this.getSquare(newPosition) != Constants.EMPTY) {
 				// If space has opposing player then move to next space in same direction
 				return step(color, newPosition, direction, count + 1);
-			} else if (color == this.getSquare(newPosition).getStatus()) {
+			} else if (color == this.getSquare(newPosition)) {
 				// If space has this player and we've moved more than one space then it's legal,
 				// otherwise it's not legal
 				return count > 0;
@@ -397,13 +397,13 @@ public class SmartPlayer extends Player {
 			Position newPosition = position.translate(direction);
 			if (newPosition.isOffBoard()) {
 				return false;
-			} else if (this.getSquare(newPosition).getStatus() == -color) {
+			} else if (this.getSquare(newPosition) == -color) {
 				boolean valid = makeMoveStep(color, newPosition, direction, count + 1);
 				if (valid) {
 					this.setSquare(color, newPosition);
 				}
 				return valid;
-			} else if (this.getSquare(newPosition).getStatus() == color) {
+			} else if (this.getSquare(newPosition) == color) {
 				return count > 0;
 			} else {
 				return false;
