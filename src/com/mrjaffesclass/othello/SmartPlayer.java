@@ -499,8 +499,35 @@ public class SmartPlayer extends Player {
 		 * @return the child node selected completely randomly.
 		 */
 		public Node getRandomNode() {
-			Random r = new Random();
-			return nodeChain.get(r.nextInt(nodeChain.size()));
+                    float score;
+                    float bestScore = 0;
+                    int bestIndex = 0;
+                    
+                    for(int i = 0; i < nodeChain.size(); i++) {
+                        Node current = nodeChain.get(i);
+                        float winRate;
+                        if(current.getSimulations() == 0) {
+                            winRate = 0;
+                        } else {
+                            winRate = (float)current.getWins() / current.getSimulations();
+                        }
+                        float explore;
+                        if(current.getSimulations() > 0) {
+                            explore = (float)Math.log(this.getSimulations());
+                            explore *= 2;
+                            explore /= current.getSimulations();
+                            explore = (float)Math.sqrt(explore);
+                        } else {
+                            explore = 2;
+                        }
+                        score = winRate + explore;
+                        if(score >= bestScore) {
+                            bestScore = score;
+                            bestIndex = i;
+                        }
+                    }
+                    
+                    return nodeChain.get(bestIndex);
 		}
 		
 		public int runSimulation() {
