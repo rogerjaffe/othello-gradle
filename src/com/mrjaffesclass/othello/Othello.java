@@ -18,7 +18,7 @@ public class Othello {
   public static void main(String[] args) {
     Controller c = new Controller( 
       new SmartPlayer(Constants.BLACK), 
-      new StrategyPlayer(Constants.WHITE)
+      new OldChamp(Constants.WHITE)
     );
     c.displayMatchup();
     int result = c.run();
