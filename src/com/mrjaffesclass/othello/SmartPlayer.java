@@ -21,6 +21,13 @@ public class SmartPlayer extends Player {
 	 */
 	@Override
 	public Position getNextMove(Board board) {
+            
+            
+                //Literally just cheat to move 2nd
+                //if(board.countSquares(Constants.EMPTY) == 60) {
+                //    return null;
+                //}
+            
 		//Initialize variables
 		Instant start = Instant.now();
 		BoardModel myBoard = new BoardModel(board);
@@ -29,8 +36,12 @@ public class SmartPlayer extends Player {
 		int bestIndex = 0;
 		
 		//Run heuristics
-		ArrayList<Float> minimaxHeuristic = getMCTSHeuristic(myBoard, getColor(), 5000);
-		
+		ArrayList<Float> minimaxHeuristic;
+                if(board.countSquares(Constants.EMPTY) > 12) {
+                    minimaxHeuristic = getMCTSHeuristic(myBoard, getColor(), 5000);
+                } else {
+                    minimaxHeuristic = getMinimaxHeuristic(myBoard, getColor(), 13);
+                }
 
 		//Get all moves
 		for (int i = 0; i < Constants.SIZE; i++) {
@@ -499,35 +510,37 @@ public class SmartPlayer extends Player {
 		 * @return the child node selected completely randomly.
 		 */
 		public Node getRandomNode() {
-                    float score;
-                    float bestScore = 0;
-                    int bestIndex = 0;
-                    
-                    for(int i = 0; i < nodeChain.size(); i++) {
-                        Node current = nodeChain.get(i);
-                        float winRate;
-                        if(current.getSimulations() == 0) {
-                            winRate = 0;
-                        } else {
-                            winRate = (float)current.getWins() / current.getSimulations();
-                        }
-                        float explore;
-                        if(current.getSimulations() > 0) {
-                            explore = (float)Math.log(this.getSimulations());
-                            explore *= 2;
-                            explore /= current.getSimulations();
-                            explore = (float)Math.sqrt(explore);
-                        } else {
-                            explore = 2;
-                        }
-                        score = winRate + explore;
-                        if(score >= bestScore) {
-                            bestScore = score;
-                            bestIndex = i;
-                        }
-                    }
-                    
-                    return nodeChain.get(bestIndex);
+//                    float score;
+//                    float bestScore = 0;
+//                    int bestIndex = 0;
+//                    
+//                    for(int i = 0; i < nodeChain.size(); i++) {
+//                        Node current = nodeChain.get(i);
+//                        float winRate;
+//                        if(current.getSimulations() == 0) {
+//                            winRate = 0;
+//                        } else {
+//                            winRate = (float)current.getWins() / current.getSimulations();
+//                        }
+//                        float explore;
+//                        if(current.getSimulations() > 0) {
+//                            explore = (float)Math.log(this.getSimulations());
+//                            explore *= 2;
+//                            explore /= current.getSimulations();
+//                            explore = (float)Math.sqrt(explore);
+//                        } else {
+//                            explore = 2;
+//                        }
+//                        score = winRate + explore;
+//                        if(score >= bestScore) {
+//                            bestScore = score;
+//                            bestIndex = i;
+//                        }
+//                    }
+//                    
+//                    return nodeChain.get(bestIndex);
+                    Random rand = new Random();
+                    return(nodeChain.get(rand.nextInt(nodeChain.size())));
 		}
 		
 		public int runSimulation() {
