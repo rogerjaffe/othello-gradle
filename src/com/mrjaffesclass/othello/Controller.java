@@ -62,9 +62,20 @@ public class Controller
           System.out.println(playerToMove.toString()+ " MOVE to "+nextMove.toString());
         }
 
-        // If a nextMove was returned, but if it's not to an empty space, or to a legalMove
-        if (nextMove != null && !board.isLegalMove(playerToMove, nextMove)) {
-          System.out.println("!!!! YOU CANNOT MOVE IN SPACE ["+nextMove.getRow()+","+nextMove.getCol()+"] !!!!\n");
+        // If a nextMove was NOT returned but there are legal moves available then quit with a DQ
+        if (nextMove == null && !board.noMovesAvailable(playerToMove)) {
+          String errString = "!!!! YOU MUST MOVE IF A MOVE IS AVAILABLE !!!!\n";
+          errString += "GAME OVER! PLAYER " + playerToMove.getName() + " IS DISQUALIFIED. IT SUCKS TO BE YOU";
+          RuntimeException re = new RuntimeException(errString);
+          throw re;
+
+        // If a nextMove was returned but it's not an empty space and a legal move then quit with a DQ
+        } else if (nextMove != null && !board.isLegalMove(playerToMove, nextMove)) {
+          String errString = "!!!! YOU CANNOT MOVE IN SPACE ["+nextMove.getRow()+","+nextMove.getCol()+"] !!!!\n";
+          errString += "GAME OVER! PLAYER " + playerToMove.getName() + " IS DISQUALIFIED. IT SUCKS TO BE YOU";
+          RuntimeException re = new RuntimeException(errString);
+          throw re;
+          
         } else if (nextMove != null) {
           // Check that the move is legal
           if (this.board.isLegalMove(playerToMove, nextMove)) {
@@ -74,6 +85,7 @@ public class Controller
             System.out.println(board.toString());
             onePlayerCantMove = false;
           }
+          
         } else {
           // No move was found. Skip the player's turn
           if (onePlayerCantMove) {
@@ -113,7 +125,12 @@ public class Controller
       System.out.println("OH NO!!! There was a time exception!\n");
       System.out.println(e.getMessage());
       return 0;
+      
+    } catch(RuntimeException e) {
+      System.out.println(e.getMessage());
+      return 0;
     }
+    
   }
     
 }

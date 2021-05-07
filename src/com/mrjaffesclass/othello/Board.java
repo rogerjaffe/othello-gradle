@@ -128,6 +128,23 @@ public class Board
   }
   
   /**
+   * Are there any available for this player?
+   * @param player Player asking
+   * @return True if moves are available
+   */
+  public boolean noMovesAvailable(Player player) {
+    for (int row = 0; row < Constants.SIZE; row++) {
+      for (int col = 0; col < Constants.SIZE; col++) {
+        Position pos = new Position(row, col);
+        if (isLegalMove(player, pos)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  /**
    * Traverses the board in the provided direction. Checks the status of
    * each space: 
    * a. If it's the opposing player then we'll move to the next
