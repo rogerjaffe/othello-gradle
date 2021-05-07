@@ -5,11 +5,14 @@
         <group>
             <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/HumanPlayer.java</file>
             <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/Board.java</file>
+            <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/Position.java</file>
             <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/RandomPlayer.java</file>
+            <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/Yeung.java</file>
             <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/SmartPlayer.java</file>
             <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/Othello.java</file>
             <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/Player.java</file>
             <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/StrategyPlayer.java</file>
+            <file>file:/C:/Users/jimmy/Desktop/othello/src/com/mrjaffesclass/othello/Controller.java</file>
         </group>
     </open-files>
 </project-private>

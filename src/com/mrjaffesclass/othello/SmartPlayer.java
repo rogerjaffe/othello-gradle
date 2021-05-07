@@ -23,13 +23,12 @@ public class SmartPlayer extends Player {
 	public Position getNextMove(Board board) {
             
             
-                //Literally just cheat to move 2nd
-                //if(board.countSquares(Constants.EMPTY) == 60) {
-                //    return null;
-                //}
+        //Literally just cheat to move 2nd
+        //if(board.countSquares(Constants.EMPTY) == 60) {
+        //    return null;
+        //}
             
 		//Initialize variables
-		Instant start = Instant.now();
 		BoardModel myBoard = new BoardModel(board);
 		ArrayList<Position> moves = new ArrayList<>();
 		float bestScore = 0;
@@ -60,8 +59,6 @@ public class SmartPlayer extends Player {
 			}
 		}
 
-		Instant end = Instant.now();
-		System.out.println(end.toEpochMilli() - start.toEpochMilli() + "ms");
 
 		// TODO implement heuristic-based algorithm
 
@@ -69,7 +66,7 @@ public class SmartPlayer extends Player {
 			return null;
 		}
 
-		System.out.println(String.valueOf(minimaxHeuristic));
+		//System.out.println(String.valueOf(minimaxHeuristic));
 		return moves.get(bestIndex);
 	}
 

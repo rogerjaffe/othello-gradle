@@ -3,7 +3,7 @@
 <properties>
 <entry key="2_end_p_location_file">{$projectDirectory}/src/com/mrjaffesclass/othello/SmartPlayer.java</entry>
 <entry key="3_p_enabled">true</entry>
-<entry key="0_start_p_location_line">87</entry>
+<entry key="0_start_p_location_line">84</entry>
 <entry key="3_start_p_location_offset">-2147483648</entry>
 <entry key="0_start_p_location_file">{$projectDirectory}/src/com/mrjaffesclass/othello/SmartPlayer.java</entry>
 <entry key="3_end_p_location_offset">2147483647</entry>
@@ -11,26 +11,26 @@
 <entry key="0_p_enabled">true</entry>
 <entry key="3_start_p_location_file">{$projectDirectory}/src/com/mrjaffesclass/othello/SmartPlayer.java</entry>
 <entry key="0_end_p_location_file">{$projectDirectory}/src/com/mrjaffesclass/othello/SmartPlayer.java</entry>
-<entry key="1_end_p_location_line">101</entry>
-<entry key="3_start_p_location_line">106</entry>
+<entry key="1_end_p_location_line">98</entry>
+<entry key="3_start_p_location_line">103</entry>
 <entry key="2_start_p_location_offset">-2147483648</entry>
 <entry key="0_p_name">Selection</entry>
 <entry key="3_end_p_location_file">{$projectDirectory}/src/com/mrjaffesclass/othello/SmartPlayer.java</entry>
 <entry key="1_p_name">Expansion</entry>
 <entry key="2_p_enabled">true</entry>
 <entry key="3_p_name">Backpropagation</entry>
-<entry key="3_end_p_location_line">110</entry>
+<entry key="3_end_p_location_line">107</entry>
 <entry key="0_end_p_location_offset">2147483647</entry>
 <entry key="2_start_p_location_file">{$projectDirectory}/src/com/mrjaffesclass/othello/SmartPlayer.java</entry>
-<entry key="2_start_p_location_line">103</entry>
+<entry key="2_start_p_location_line">100</entry>
 <entry key="1_end_p_location_file">{$projectDirectory}/src/com/mrjaffesclass/othello/SmartPlayer.java</entry>
 <entry key="1_end_p_location_offset">2147483647</entry>
 <entry key="1_start_p_location_offset">-2147483648</entry>
-<entry key="0_end_p_location_line">95</entry>
+<entry key="0_end_p_location_line">92</entry>
 <entry key="1_p_enabled">true</entry>
 <entry key="1_start_p_location_file">{$projectDirectory}/src/com/mrjaffesclass/othello/SmartPlayer.java</entry>
-<entry key="1_start_p_location_line">97</entry>
-<entry key="2_end_p_location_line">104</entry>
+<entry key="1_start_p_location_line">94</entry>
+<entry key="2_end_p_location_line">101</entry>
 <entry key="0_start_p_location_offset">-2147483648</entry>
 <entry key="2_end_p_location_offset">2147483647</entry>
 </properties>
