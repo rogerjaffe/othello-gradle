@@ -30,7 +30,7 @@ public class Controller
    * Displays the match up with the player names
    */
   public void displayMatchup() {
-    System.out.println("******* MATCHUP *******");
+    System.out.println("OTHELLO Version "+Constants.VERSION+"\n\n******* MATCHUP *******");
     System.out.println(this.player1.toString() + " vs. " + this.player2.toString() + "\n");
   }
   

@@ -10,6 +10,7 @@ package com.mrjaffesclass.othello;
 public class Constants
 {
   // Constants used in game
+  public final static String VERSION = "1.04";
   
   public final static int SIZE = 8;
   public final static int MOVE_COUNT = Constants.SIZE * Constants.SIZE - 4;

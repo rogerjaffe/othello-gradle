@@ -17,7 +17,7 @@ public class Othello {
    */
   public static void main(String[] args) {
     Controller c = new Controller( 
-      new TestPlayerCheat(Constants.BLACK), 
+      new TestPlayer(Constants.BLACK), 
       new TestPlayer(Constants.WHITE)
     );
     c.displayMatchup();
