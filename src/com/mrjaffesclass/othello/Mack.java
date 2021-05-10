@@ -507,37 +507,37 @@ public class Mack extends Player {
 		 * @return the child node selected completely randomly.
 		 */
 		public Node getRandomNode() {
-//                    float score;
-//                    float bestScore = 0;
-//                    int bestIndex = 0;
-//                    
-//                    for(int i = 0; i < nodeChain.size(); i++) {
-//                        Node current = nodeChain.get(i);
-//                        float winRate;
-//                        if(current.getSimulations() == 0) {
-//                            winRate = 0;
-//                        } else {
-//                            winRate = (float)current.getWins() / current.getSimulations();
-//                        }
-//                        float explore;
-//                        if(current.getSimulations() > 0) {
-//                            explore = (float)Math.log(this.getSimulations());
-//                            explore *= 2;
-//                            explore /= current.getSimulations();
-//                            explore = (float)Math.sqrt(explore);
-//                        } else {
-//                            explore = 2;
-//                        }
-//                        score = winRate + explore;
-//                        if(score >= bestScore) {
-//                            bestScore = score;
-//                            bestIndex = i;
-//                        }
-//                    }
-//                    
-//                    return nodeChain.get(bestIndex);
-                    Random rand = new Random();
-                    return(nodeChain.get(rand.nextInt(nodeChain.size())));
+                    if(this.getSimulations() > 100 && false) {
+                        float score;
+                        float bestScore = 0;
+                        int bestIndex = 0;
+                        
+                        for(int i = 0; i < nodeChain.size(); i++) {
+                            Node current = nodeChain.get(i);
+                            
+                            float winRate;
+                            int sims = current.getSimulations()+1;
+                            int wins = current.getWins()+1;
+                            winRate = (float)wins / sims;
+                            
+                            float explore;
+                            explore = (float)Math.log(sims);
+                            explore *= 2;
+                            explore /= sims;
+                            explore = (float)Math.sqrt(explore);
+                            
+                            score = winRate + explore;
+                            if(score >= bestScore) {
+                                bestScore = score;
+                                bestIndex = i;
+                            }
+                        }
+                        
+                        return nodeChain.get(bestIndex);
+                    } else {
+                        Random rand = new Random();
+                        return(nodeChain.get(rand.nextInt(nodeChain.size())));
+                    }
 		}
 		
 		public int runSimulation() {
