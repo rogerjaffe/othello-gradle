@@ -3,13 +3,13 @@ package com.mrjaffesclass.othello;
 import java.time.Instant;
 import java.util.*;
 
-public class SmartPlayer extends Player {
+public class Mack extends Player {
 	/**
 	 * Constructor
 	 * 
 	 * @param color Player color: one of Constants.BLACK or Constants.WHITE
 	 */
-	public SmartPlayer(int color) {
+	public Mack(int color) {
 		super(color);
 	}
 
