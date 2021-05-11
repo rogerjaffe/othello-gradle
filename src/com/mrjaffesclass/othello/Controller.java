@@ -54,10 +54,6 @@ public class Controller {
 			// While there are still spaces left
 			while (!neitherPlayerCanMove && board.countSquares(Constants.EMPTY) > 0) {
 
-				//Print turn count
-				System.out.println("TURN " + turn);
-				turn++;
-
 				// Get the player whose turn it is
 				Player playerToMove = (blackPlayersTurn) ? this.player1 : this.player2;
 
@@ -69,6 +65,11 @@ public class Controller {
 				if (nextMove != null) {
 					System.out.println(playerToMove.toString() + " MOVE to " + nextMove.toString());
 				}
+				
+				//Print turn count
+				System.out.println("TURN " + turn);
+				turn++;
+				
 				System.out.println(end.toEpochMilli() - start.toEpochMilli() + "ms to respond");
 
 				// If a nextMove was returned, but if it's not to an empty space, or to a legalMove
